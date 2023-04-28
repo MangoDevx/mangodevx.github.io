@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;800&display=swap');
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: black;
+}
+
+.main-hero {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    max-width: 90rem;
+    width: 55%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.main-hero h1 {
+    color: white;
+    font-weight: 800;
+    font-size: 6rem;
+    padding-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(20, 20, 20, 0.5);
+}
+
+.main-hero h3 {
+    color: white;
+    font-weight: 400;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(20, 20, 20, 0.5);
+    padding-bottom: 1rem;
+}
+
+.main-hero a {
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fade-in 2s ease 2s 1 normal forwards;
+    box-shadow: 2px 2px 4px rgba(20, 20, 20, 0.5);
+}
+
+/* Navbar Stuffs */
+.navbar-brand a {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+.nav-header {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+}
+
+.headshot {
+    width: 10%;
+    border-radius: 50%;
+    margin-left: 3rem;
+}
+
+.bounce {
+    animation: bounce 1s ease-in-out;
+}
+
+.nav-list {
+    margin-left: auto;
+    padding-right: 4rem;
+}
+
+.nav-item {
+    padding-right: 3rem;
+}
+
+.nav-link {
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: black;
+    letter-spacing: 1px;
+}
+
+.nav-link:hover {
+    animation: navHover 1s ease 0s 1 normal forwards;
+}
+
+.active {
+    color: #B73B3B !important;
+}
+
+/* Sidebar Stuffs */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    padding: 20px;
+}
+  
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+  
+.sidebar li {
+    margin-bottom: 20px;
+}
+  
+.sidebar li:last-child {
+    margin-bottom: 0;
+}
+  
+.sidebar a {
+    display: block;
+    color: red;
+    text-decoration: none;
+    font-size: 24px;
+}
+  
+.sidebar i {
+    margin-right: 10px;
+}
+  
+
+/* Scrollbar Stuffs */
+
+:root{
+    scrollbar-color: rgb(210,210,210) rgb(46,54,69) !important;
+    scrollbar-width: thin !important;
+}
+
+/* Particle Stuff */
+canvas {
+    display: block;
+    vertical-align: bottom;
+  }
+  
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Transition Stuff */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes navHover {
+	0% {
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+	}
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+  
