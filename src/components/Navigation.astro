@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import ProfilePicture from '../assets/images/profile-picture.jpg';
+import Social from './Social.astro';
+---
+
+<nav class="bg-white shadow-md">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center h-16">
+      <!-- Left side - Name and Profile -->
+      <div class="flex-1 flex items-center">
+        <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+          <Image src={ProfilePicture} alt="Keith Ritter" class="w-full h-full object-cover" />
+        </div>
+        <a href="/" class="text-xl font-bold text-gray-900">
+          <span class="text-blue-600">Keith</span> Ritter
+        </a>
+      </div>
+
+      <!-- Center - Social Icons -->
+      <div class="hidden md:flex items-center justify-center space-x-4">
+        <Social platform="github" username="keithritter" />
+        <Social platform="instagram" username="keithritter" />
+        <Social platform="discord" username="keithritter" />
+      </div>
+
+      <!-- Right side - Navigation Links -->
+      <div class="flex-1 hidden md:flex items-center justify-end space-x-8">
+        <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+          Projects
+        </a>
+        <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+          About
+        </a>
+        <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+          Contact
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

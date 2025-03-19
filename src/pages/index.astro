@@ -1,11 +1,120 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import SplashScreen from '../components/SplashScreen.astro';
+import { Image } from 'astro:assets';
+import HeroImage from '../assets/images/herobg.jpg';
+import { ViewTransitions } from 'astro:transitions';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Keith Ritter - Software Developer">
+  <!-- Add ViewTransitions to enable the API -->
+  <ViewTransitions />
+
+  <!-- Splash Screen Container with view transition name -->
+  <div 
+    id="splash-container" 
+    class="fixed inset-0 z-50 bg-black"
+    transition:animate="fade"
+    transition:name="splash"
+  >
+    <SplashScreen />
+  </div>
+
+  <!-- Main Content with view transition name -->
+  <div 
+    id="main-content" 
+    class="opacity-0"
+    transition:animate="fade"
+    transition:name="main"
+  >
+    <div class="flex flex-col min-h-screen">
+      <!-- Navigation Bar -->
+      <Navigation />
+      
+      <!-- Hero Section -->
+      <main class="flex-grow relative flex items-center">
+        <!-- Hero Background -->
+        <div class="absolute inset-0">
+          <Image 
+            src={HeroImage} 
+            alt="Mountain landscape background" 
+            class="w-full h-full object-cover"
+            transition:name="hero-image"
+          />
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-black/30"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative w-full container mx-auto px-4">
+          <div class="w-full md:w-1/2 text-left p-8 bg-black/10 backdrop-blur-sm rounded-2xl">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">
+              Hi, I'm <span class="text-blue-300">Keith Ritter</span>
+            </h1>
+            <h2 class="text-xl md:text-2xl font-medium mb-8 text-gray-100">
+              Floridian Software Developer with experience in defense contracting and manufacturing development.
+            </h2>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#projects" class="px-6 py-3 bg-blue-600/90 hover:bg-blue-700 text-white rounded-lg font-medium text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 backdrop-blur-sm">
+                Projects
+              </a>
+              <a href="#about" class="px-6 py-3 bg-teal-600/90 hover:bg-teal-700 text-white rounded-lg font-medium text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-teal-500/25 backdrop-blur-sm">
+                About Me
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+      <!-- Footer -->
+      <Footer />
+    </div>
+  </div>
 </Layout>
+
+<script>
+  // Listen for the splash screen completion event
+  document.addEventListener('splashScreenComplete', () => {
+    // Use view transitions API if available
+    if (document.startViewTransition) {
+      document.startViewTransition(() => {
+        const splashContainer = document.getElementById('splash-container');
+        const mainContent = document.getElementById('main-content');
+        
+        if (splashContainer && mainContent) {
+          splashContainer.style.opacity = '0';
+          mainContent.style.opacity = '1';
+          // Remove splash after transition
+          setTimeout(() => {
+            splashContainer.remove();
+          }, 1000);
+        }
+      });
+    } else {
+      // Fallback for browsers that don't support view transitions
+      const splashContainer = document.getElementById('splash-container');
+      const mainContent = document.getElementById('main-content');
+      
+      if (splashContainer && mainContent) {
+        splashContainer.style.opacity = '0';
+        mainContent.style.opacity = '1';
+        setTimeout(() => {
+          splashContainer.remove();
+        }, 1000);
+      }
+    }
+  });
+</script>
+
+<style>
+  /* Add transition styles */
+  #splash-container {
+    transition: opacity 1s ease-out;
+  }
+  
+  #main-content {
+    transition: opacity 1s ease-in;
+  }
+</style>

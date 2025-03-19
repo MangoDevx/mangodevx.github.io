@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import ProfilePicture from '../assets/images/profile-picture.jpg';
+---
+
+<Layout title="About">
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h1>
+        
+        <div class="flex flex-col md:flex-row gap-8 items-center mb-12">
+          <div class="w-full md:w-1/3">
+            <div class="rounded-full overflow-hidden w-48 h-48 mx-auto">
+              <Image src={ProfilePicture} alt="Your Name" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <div class="w-full md:w-2/3">
+            <h2 class="text-2xl font-bold mb-4">Your Name</h2>
+            <p class="text-gray-600 mb-4">
+              Software Developer & UI/UX Enthusiast based in [Your Location]. I specialize in building modern, responsive web applications with a focus on user experience and performance.
+            </p>
+            <p class="text-gray-600">
+              With over [X] years of experience in web development, I've worked on a variety of projects ranging from small business websites to large-scale enterprise applications. I'm passionate about creating clean, efficient code and beautiful user interfaces.
+            </p>
+          </div>
+        </div>
+        
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-6">Skills</h2>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <h3 class="text-lg font-semibold mb-2">Frontend</h3>
+              <ul class="text-gray-600 space-y-1">
+                <li>HTML5 & CSS3</li>
+                <li>JavaScript (ES6+)</li>
+                <li>React / Vue / Angular</li>
+                <li>Tailwind CSS</li>
+                <li>Responsive Design</li>
+              </ul>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <h3 class="text-lg font-semibold mb-2">Backend</h3>
+              <ul class="text-gray-600 space-y-1">
+                <li>Node.js</li>
+                <li>Express</li>
+                <li>Python (Django/Flask)</li>
+                <li>RESTful APIs</li>
+                <li>GraphQL</li>
+              </ul>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm">
+              <h3 class="text-lg font-semibold mb-2">Other</h3>
+              <ul class="text-gray-600 space-y-1">
+                <li>Git & GitHub</li>
+                <li>Docker</li>
+                <li>CI/CD</li>
+                <li>Testing (Jest, Cypress)</li>
+                <li>AWS / Firebase</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-6">Experience</h2>
+          <div class="space-y-8">
+            <div class="border-l-4 border-blue-500 pl-4">
+              <h3 class="text-xl font-semibold">Senior Developer</h3>
+              <p class="text-gray-500 italic mb-2">Company Name • 2020 - Present</p>
+              <p class="text-gray-600">
+                Responsible for developing and maintaining web applications, leading a team of developers, and collaborating with designers and product managers.
+              </p>
+            </div>
+            <div class="border-l-4 border-blue-500 pl-4">
+              <h3 class="text-xl font-semibold">Frontend Developer</h3>
+              <p class="text-gray-500 italic mb-2">Company Name • 2018 - 2020</p>
+              <p class="text-gray-600">
+                Developed user interfaces for web applications, implemented responsive designs, and worked closely with the backend team to integrate APIs.
+              </p>
+            </div>
+            <div class="border-l-4 border-blue-500 pl-4">
+              <h3 class="text-xl font-semibold">Junior Developer</h3>
+              <p class="text-gray-500 italic mb-2">Company Name • 2016 - 2018</p>
+              <p class="text-gray-600">
+                Assisted in the development of websites and web applications, implemented UI components, and fixed bugs.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h2 class="text-2xl font-bold mb-6">Education</h2>
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-xl font-semibold">Bachelor of Science in Computer Science</h3>
+              <p class="text-gray-500 italic">University Name • 2012 - 2016</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold">Relevant Certifications</h3>
+              <ul class="text-gray-600 space-y-1 mt-2">
+                <li>AWS Certified Developer</li>
+                <li>Google Cloud Professional Developer</li>
+                <li>Certified Scrum Master</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

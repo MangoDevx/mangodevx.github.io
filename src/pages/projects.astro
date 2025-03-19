@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Projects">
+  <section class="py-12 bg-gradient-to-b from-indigo-50 to-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+          My <span class="text-indigo-600">Projects</span>
+        </h1>
+        <p class="text-xl text-gray-700 mb-8">
+          A collection of my work showcasing my skills and experience in software development.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project Card 1 -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100">
+          <div class="h-48 bg-indigo-600"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2 text-gray-900">Project Title 1</h3>
+            <p class="text-gray-600 mb-4">Brief description of the project and technologies used.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded-full">React</span>
+              <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded-full">Node.js</span>
+              <span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded-full">MongoDB</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project Card 2 -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100">
+          <div class="h-48 bg-emerald-500"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2 text-gray-900">Project Title 2</h3>
+            <p class="text-gray-600 mb-4">Brief description of the project and technologies used.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded-full">Vue.js</span>
+              <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded-full">Express</span>
+              <span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded-full">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project Card 3 -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300 border border-gray-100">
+          <div class="h-48 bg-amber-500"></div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2 text-gray-900">Project Title 3</h3>
+            <p class="text-gray-600 mb-4">Brief description of the project and technologies used.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded-full">Angular</span>
+              <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded-full">Firebase</span>
+              <span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded-full">TypeScript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

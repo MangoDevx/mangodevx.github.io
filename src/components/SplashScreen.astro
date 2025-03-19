@@ -1,0 +1,34 @@
+---
+---
+
+<div
+  id="threejs-container"
+  class="fixed inset-0 z-50 bg-black flex items-center justify-center"
+>
+  <div id="threejs-canvas" class="w-full h-full"></div>
+  <div id="loading-text" class="absolute text-white text-xl font-medium">
+    Loading...
+  </div>
+</div>
+
+<script>
+  // Load Three.js and initialize the splash screen
+  import('./SplashScreenLoader.js').then((module) => {
+    try {
+      const loader = new module.default("threejs-canvas");
+      // Hide loading text once Three.js is initialized
+      const loadingText = document.getElementById('loading-text');
+      if (loadingText) {
+        loadingText.style.display = 'none';
+      }
+    } catch (error) {
+      console.error('Failed to initialize splash screen:', error);
+      // If there's an error, trigger the completion event
+      document.dispatchEvent(new Event('splashScreenComplete'));
+    }
+  }).catch(error => {
+    console.error('Failed to load splash screen:', error);
+    // If there's an error loading the module, trigger the completion event
+    document.dispatchEvent(new Event('splashScreenComplete'));
+  });
+</script>
