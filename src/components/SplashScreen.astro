@@ -12,7 +12,12 @@
 </div>
 
 <script>
+import { prefetch } from 'astro:prefetch';
+
   // Load Three.js and initialize the splash screen
+  console.log('prefetching home')
+  prefetch('/home', {ignoreSlowConnection: true})
+
   import('./SplashScreenLoader.js').then((module) => {
     try {
       const loader = new module.default("threejs-canvas");
@@ -23,12 +28,8 @@
       }
     } catch (error) {
       console.error('Failed to initialize splash screen:', error);
-      // If there's an error, trigger the completion event
-      document.dispatchEvent(new Event('splashScreenComplete'));
     }
   }).catch(error => {
     console.error('Failed to load splash screen:', error);
-    // If there's an error loading the module, trigger the completion event
-    document.dispatchEvent(new Event('splashScreenComplete'));
   });
 </script>

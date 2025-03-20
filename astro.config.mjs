@@ -15,5 +15,9 @@ export default defineConfig({
 
   build: {
     assetsPrefix: '/'
-  }
+  },
+
+  prefetch: {
+    defaultStrategy: 'viewport'
+  },
 });

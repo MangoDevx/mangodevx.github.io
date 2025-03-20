@@ -8,8 +8,8 @@ export default class SplashScreenLoader {
     this.isFadingOut = false;
     this.fadeOutSpeed = 0.02;
     this.opacity = 1;
-    this.floridaCoords = { lat: 28.5383, lon: -81.3792 }; // Orlando, Florida coordinates
-    this.targetRotation = { lat: 28.5383, lon: -81.3792 }; // Orlando, Florida coordinates
+    this.floridaCoords = { lat: 28.5383, lon: -81.3792 };
+    this.targetRotation = { lat: 28.5383, lon: -81.3792 };
     this.cameraDistance = 15; // Initial camera distance
 
     // Call the initialize method
@@ -31,12 +31,10 @@ export default class SplashScreenLoader {
     let textureLoader = new THREE.TextureLoader();
     let earthDayTexture = textureLoader.load('/textures/earth_daymap.jpg');
     let earthNormalTexture = textureLoader.load('/textures/earth_normal_map.jpg');
-    let earthSpecularTexture = textureLoader.load('/textures/earth_specular_map.jpg');
 
     let material = new THREE.MeshStandardMaterial({
       map: earthDayTexture,
       normalMap: earthNormalTexture,
-      specularMap: earthSpecularTexture,
       transparent: true,
       opacity: 1
     });
@@ -65,7 +63,7 @@ export default class SplashScreenLoader {
   }
 
   animate() {
-    requestAnimationFrame(() => this.animate());
+    this.animationFrame = requestAnimationFrame(() => this.animate());
 
     if (!this.isZoomingToFlorida) {
       // Use the saved exact Three.js coordinates for Florida
@@ -104,9 +102,10 @@ export default class SplashScreenLoader {
         this.opacity -= this.fadeOutSpeed;
         this.globe.material.opacity = this.opacity;
       } else {
-        // Clean up resources before removing the container
-        this.cleanup();
-        this.container.remove();
+        // Animation complete, trigger event
+        document.dispatchEvent(new Event('splashScreenComplete'));
+        // Stop the animation loop
+        cancelAnimationFrame(this.animationFrame);
       }
     }
 
@@ -121,6 +120,11 @@ export default class SplashScreenLoader {
 
   // Function to clean up Three.js resources
   cleanup() {
+    // Stop the animation loop
+    if (this.animationFrame) {
+      cancelAnimationFrame(this.animationFrame);
+    }
+
     // Dispose of geometries
     if (this.globe && this.globe.geometry) {
       this.globe.geometry.dispose();
@@ -131,7 +135,6 @@ export default class SplashScreenLoader {
       // Dispose of textures if they exist
       if (this.globe.material.map) this.globe.material.map.dispose();
       if (this.globe.material.normalMap) this.globe.material.normalMap.dispose();
-      if (this.globe.material.specularMap) this.globe.material.specularMap.dispose();
       
       // Dispose of the material
       this.globe.material.dispose();
@@ -150,14 +153,6 @@ export default class SplashScreenLoader {
       if (this.scene) {
         this.scene.clear();
       }
-      
-      // Remove the canvas from the DOM
-      if (this.renderer.domElement) {
-        this.renderer.domElement.remove();
-      }
     }
-
-    // Dispatch event when cleanup is complete
-    document.dispatchEvent(new Event('splashScreenComplete'));
   }
 }
