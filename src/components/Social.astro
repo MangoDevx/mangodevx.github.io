@@ -1,7 +1,7 @@
 ---
-const { platform, username } = Astro.props;
+const { platform, username, ext } = Astro.props;
 ---
-<a href={`https://www.${platform}.com/${username}`} target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
+<a href={`https://${platform}.${ext}/${username}`} target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600 transition-colors duration-300">
   <i class={`fab fa-${platform} text-xl`}></i>
   <span class="sr-only">{platform}</span>
 </a>
