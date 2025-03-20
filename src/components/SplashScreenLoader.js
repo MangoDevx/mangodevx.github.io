@@ -86,7 +86,7 @@ export default class SplashScreenLoader {
         Math.abs(targetY - currentY) < 0.01 &&
         Math.abs(targetZ - currentZ) < 0.01
       ) {
-        this.startZoomToFlorida();
+        this.isZoomingToFlorida = true;
       }
     } else if (!this.isFadingOut) {
       // Smooth zoom-in effect once we're near Florida
@@ -111,11 +111,6 @@ export default class SplashScreenLoader {
 
     // Render the scene
     this.renderer.render(this.scene, this.camera);
-  }
-
-  // Function to start the zooming to Florida
-  startZoomToFlorida() {
-    this.isZoomingToFlorida = true;
   }
 
   // Function to clean up Three.js resources
