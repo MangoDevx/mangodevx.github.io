@@ -1,50 +1,82 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SplashScreen from '../components/SplashScreen.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import HeroImage from '../assets/images/herobg.jpg';
 ---
 
-<Layout title="Welcome - Keith Ritter">
-
-  <!-- Splash Screen Container -->
-  <div 
-    id="splash-container" 
-    class="fixed inset-0 z-50 bg-black"
-  >
-    <SplashScreen />
+<Layout title="Keith Ritter - Software Developer">
+  
+  <div class="fixed inset-0 bg-black animate-fade-out"></div>
+  <div class="flex flex-col min-h-screen animate-fade-in">
+    <!-- Navigation Bar -->
+    <Navigation />
+    
+    <!-- Hero Section -->
+    <main class="flex-grow relative flex items-center">
+      <!-- Hero Background -->
+      <div class="absolute inset-0">
+        <Image 
+          src={HeroImage} 
+          alt="Mountain landscape background" 
+          class="w-full h-full object-cover"
+        />
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black/30"></div>
+      </div>
+      
+      <!-- Content -->
+      <div class="relative w-full container mx-auto px-4">
+        <div class="w-full md:w-1/2 text-left p-8 bg-black/10 backdrop-blur-sm rounded-2xl">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">
+            Hi, I'm <span class="text-blue-300">Keith Ritter</span>
+          </h1>
+          <h2 class="text-xl md:text-2xl font-medium mb-8 text-gray-100">
+            Floridian Software Developer with experience in defense contracting and manufacturing development.
+          </h2>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#projects" class="px-6 py-3 bg-blue-600/90 hover:bg-blue-700 text-white rounded-lg font-medium text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 backdrop-blur-sm">
+              Projects
+            </a>
+            <a href="#about" class="px-6 py-3 bg-teal-600/90 hover:bg-teal-700 text-white rounded-lg font-medium text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-teal-500/25 backdrop-blur-sm">
+              About Me
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- Footer -->
+    <Footer />
   </div>
 </Layout>
 
-<script>
-import { navigate } from "astro:transitions/client";
-import type SplashScreenLoader from '../components/SplashScreenLoader';
-
-let splashLoader: SplashScreenLoader | null = null;
-
-// Listen for the splash screen completion event
-document.addEventListener('splashScreenComplete', () => {
-  navigate('/home');
-});
-
-// Get reference to the splash loader instance
-document.addEventListener('astro:load', () => {
-  import('../components/SplashScreenLoader.js').then((module) => {
-    const threejsCanvas = document.getElementById('threejs-canvas');
-    if (threejsCanvas) {
-      splashLoader = new module.default('threejs-canvas');
-    }
-  });
-});
-
-// Clean up resources before transitioning
-document.addEventListener('astro:before-swap', () => {
-  if (splashLoader) {
-    splashLoader.cleanup();
-  }
-});
-</script>
-
 <style>
-  #splash-container {
-    transition: opacity 1s ease-out;
+  .animate-fade-in {
+    animation: fadeIn 800ms ease-out forwards;
+    opacity: 0;
   }
-</style>
+
+  .animate-fade-out {
+    animation: fadeOut 800ms ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+</style> 
