@@ -20,4 +20,7 @@ export default defineConfig({
   prefetch: {
     defaultStrategy: 'viewport'
   },
+
+  site: 'https://mangodevx.github.io',
+  base: ''
 });
